@@ -48,7 +48,7 @@ public class BinaryTree {
         levelOrder(root);
         ansPrinter("IterativePrePostIn","");
         iterativePrePostIn(root);
-        ansPrinter("IsNodeExists",find(root,10));
+        ansPrinter("IsNodeExists",find(root,30));
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -269,24 +269,13 @@ public class BinaryTree {
     }
 
     public static boolean find(Node root, int data){
-
-        if(root == null){
+        if(root == null)
             return false;
-        }
 
         if(root.data == data)
             return true;
 
-        boolean filp = find(root.left,data);
-        if(filp == true){
-            return true;
-        }
-
-        boolean firp = find(root.right,data);
-        if(firp){
-            return true;
-        }
-        return false;
+       return find(root.left,data) || find(root.right, data);
     }
 }
 
