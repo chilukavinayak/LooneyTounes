@@ -1,8 +1,6 @@
 package com.java.learn.dsalgo.binarytree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
     public static class Node{
@@ -49,7 +47,8 @@ public class BinaryTree {
         ansPrinter("levelOrderTraversal","");
         levelOrder(root);
         ansPrinter("IterativePrePostIn","");
-        IterativePrePostIn(root);
+        iterativePrePostIn(root);
+        ansPrinter("IsNodeExists",find(root,10));
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -228,7 +227,7 @@ public class BinaryTree {
         }
     }
 
-    public static void IterativePrePostIn(Node root){
+    public static void iterativePrePostIn(Node root){
 
         Stack<Pair> st = new Stack<Pair>();
         Pair rtp = new Pair(root,1);
@@ -269,6 +268,26 @@ public class BinaryTree {
 
     }
 
+    public static boolean find(Node root, int data){
+
+        if(root == null){
+            return false;
+        }
+
+        if(root.data == data)
+            return true;
+
+        boolean filp = find(root.left,data);
+        if(filp == true){
+            return true;
+        }
+
+        boolean firp = find(root.right,data);
+        if(firp){
+            return true;
+        }
+        return false;
+    }
 }
 
 
