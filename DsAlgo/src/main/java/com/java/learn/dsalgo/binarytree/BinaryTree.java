@@ -1,5 +1,8 @@
 package com.java.learn.dsalgo.binarytree;
 
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -44,8 +47,9 @@ public class BinaryTree {
         inOrder(root);
         ansPrinter("postOrderTravers","");
         postOrder(root);
+        ansPrinter("levelOrderTraversal","");
+        levelOrder(root);
     }
-
 
     public static<T> void ansPrinter(String name,T s) {
         System.out.println("------------------------------"+name+"--------------------------------------");
@@ -155,7 +159,6 @@ public class BinaryTree {
         return Math.min(node.data,minOflvAndRv);
 
     }
-
     //edges
     public static int height(Node node){
         if(node == null){
@@ -205,6 +208,23 @@ public class BinaryTree {
         preOrder(node.right);
         System.out.println(node.data);
 
+    }
+
+    public static void levelOrder(Node node){
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.offer(node);
+        while(!queue.isEmpty()){
+            int s = queue.size();
+            for(int i=1;i<=s;i++){
+                Node cn = queue.poll();
+                System.out.print(cn.data+" ");
+                if(cn.left != null )
+                    queue.offer(cn.left);
+                if(cn.right != null)
+                    queue.offer(cn.right);
+            }
+            System.out.println();
+        }
     }
 
 }
