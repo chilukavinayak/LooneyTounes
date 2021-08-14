@@ -55,6 +55,23 @@ public class BinaryTree {
         printKDown(root,2);
         ansPrinter("printNodesKDistanceAway","");
         printNodesKDistanceAway(root,37,2);
+        printPathRootToLeaveInRage(root,"",0,150,250);
+    }
+
+    private static void printPathRootToLeaveInRage(Node root, String ans, int sum, int low, int high) {
+        if(root == null)
+            return;
+
+        if(root.left == null && root.right == null){
+            sum += root.data;
+            if(sum >= low && sum <= high){
+                System.out.println(ans+" "+root.data);
+            }
+            return;
+        }
+
+        printPathRootToLeaveInRage(root.left,ans+root.data+" ",sum+root.data,low,high);
+        printPathRootToLeaveInRage(root.right,ans+root.data+" ",sum+root.data,low,high);
     }
 
     public static<T> void ansPrinter(String name,T s) {
