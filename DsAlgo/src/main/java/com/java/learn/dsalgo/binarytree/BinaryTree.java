@@ -29,31 +29,50 @@ class Node{
 
 public class BinaryTree {
 
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        Integer[] arr = new Integer[]{50,25,12,null,null,37,30,null,null,null,75,62,null,70,null,null,87,null,null};
+        Node root = bt.constructTree(arr);
+        bt.display(root);
+    }
+
     //preOrder-Iterative-Construct
-    public Node constructTree(int[] a){
+    public Node constructTree(Integer[] a){
 
         Node rn = new Node(a[0]);
         Pair rp = new Pair(rn,1);
+
         Stack<Pair> s = new Stack<Pair>();
         s.push(rp);
+
         int idx = 0;
-        while(!s.isEmpty()){
-            Pair p = s.peek();
-            if(p.state == 1){
+
+        while(s.size()>0){
+
+            Pair top = s.peek();
+            if(top.state == 1){
                 idx++;
-                Node ln = new Node(a[idx]);
-                p.node.left = ln;
-                p.state++;
-                Pair lp = new Pair(ln,1);
-                s.push(lp);
+
+                if(a[idx] != null){
+                    top.node.left = new Node(a[idx]);
+                    Pair lp = new Pair(top.node.left ,1);
+                    s.push(lp);
+                }else{
+                    top.node.left = null;
+                }
+
+                top.state++;
             }
-            else if(p.state == 2){
+            else if(top.state == 2){
                 idx++;
-                Node n = new Node(a[idx]);
-                p.node.right = n;
-                p.state++;
-                Pair rtp = new Pair(rn,1);
-                s.push(rtp);
+                if(a[idx] != null){
+                    top.node.right = new Node(a[idx]);;
+                    Pair rtp = new Pair(top.node.right,1);
+                    s.push(rtp);
+                }else{
+                    top.node.right = null;
+                }
+                top.state++;
             }
             else{
                 s.pop();
@@ -62,5 +81,41 @@ public class BinaryTree {
 
         }
         return rn;
+    }
+
+    public void display(Node root){
+        if(root == null){
+            return;
+        }
+
+        String str = "";
+        str += root.left == null?".":root.left.data;
+        str += "<-" + root.data + "->";
+        str += root.right == null?".":root.right.data;
+        System.out.println(str);
+
+        if(root.left != null)
+            display(root.left);
+        if(root.right != null)
+            display(root.right);
+    }
+
+
+    public int size(Node node){
+        if(node == null){
+            return 0;
+        }
+
+
+        int lsum = 0;
+        if(node.left != null)
+            lsum = size(node.left);
+
+
+        int rsum = 0;
+        if(node.right != null)
+            rsum = size(node.right);
+        return lsum+rsum+1;
+
     }
 }
