@@ -1,6 +1,5 @@
 package com.java.learn.dsalgo.binarytree;
 
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -49,6 +48,8 @@ public class BinaryTree {
         postOrder(root);
         ansPrinter("levelOrderTraversal","");
         levelOrder(root);
+        ansPrinter("IterativePrePostIn","");
+        IterativePrePostIn(root);
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -225,6 +226,47 @@ public class BinaryTree {
             }
             System.out.println();
         }
+    }
+
+    public static void IterativePrePostIn(Node root){
+
+        Stack<Pair> st = new Stack<Pair>();
+        Pair rtp = new Pair(root,1);
+
+        st.push(rtp);
+        String pre = "";
+        String in = "";
+        String post = "";
+        while(!st.isEmpty()){
+            Pair top = st.peek();
+            if(top.state == 1){
+                if(top.node.left != null){
+                    Node ln = top.node.left;
+                    Pair lp = new Pair(ln,1);
+                    st.push(lp);
+                }
+                pre += top.node.data+" ";
+                top.state++;
+            }
+            else if(top.state == 2){
+                if(top.node.right != null){
+                    Node rn = top.node.right;
+                    Pair rp = new Pair(rn,1);
+                    st.push(rp);
+                }
+                in += top.node.data+" ";
+                top.state++;
+            }
+            else{
+                post += top.node.data+" ";
+                st.pop();
+            }
+
+        }
+        System.out.println(pre);
+        System.out.println(in);
+        System.out.println(post);
+
     }
 
 }
