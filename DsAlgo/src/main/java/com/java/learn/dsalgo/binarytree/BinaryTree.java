@@ -22,7 +22,7 @@ public class BinaryTree {
         }
     }
 
-    public static<T> void separator(String name,T s) {
+    public static<T> void ansPrinter(String name,T s) {
         System.out.println("------------------------------"+name+"--------------------------------------");
         System.out.println(s);
         System.out.println("-----------------------------------------------------------------------------");
@@ -33,7 +33,10 @@ public class BinaryTree {
         Node root = construct(arr);
         display(root);
         int size = size(root);
-        separator("size",size);
+        ansPrinter("size",size);
+        int sum = sum(root);
+        ansPrinter("sum", sum);
+
     }
     public static Node construct(Integer[] arr){
 
@@ -102,6 +105,16 @@ public class BinaryTree {
         int lc = size(root.left);
         int rc = size(root.right);
         return lc+rc+1;
+    }
+
+    public static int sum(Node node){
+        if(node == null){
+            return 0;
+        }
+        int ls =   sum(node.left);
+        int rs =  sum(node.right);
+        int s = node.data + ls + rs;
+        return s;
     }
 }
 
