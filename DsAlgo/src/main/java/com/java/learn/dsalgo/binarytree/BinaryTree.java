@@ -29,31 +29,43 @@ class Node{
 
 public class BinaryTree {
 
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        Integer[] arr = new Integer[]{50,25,12,null,null,37,30,null,null,null,75,62,null,70,null,null,87,null,null};
+        Node root = bt.constructTree(arr);
+        bt.display(root);
+    }
+
     //preOrder-Iterative-Construct
-    public Node constructTree(int[] a){
+    public Node constructTree(Integer[] a){
 
         Node rn = new Node(a[0]);
         Pair rp = new Pair(rn,1);
         Stack<Pair> s = new Stack<Pair>();
         s.push(rp);
         int idx = 0;
-        while(!s.isEmpty()){
+        while(s.size()>0){
             Pair p = s.peek();
             if(p.state == 1){
                 idx++;
-                Node ln = new Node(a[idx]);
-                p.node.left = ln;
+
+                if(a[idx] != null){
+                    Node ln = new Node(a[idx]);
+                    p.node.left = ln;
+                    Pair lp = new Pair(ln,1);
+                    s.push(lp);
+                }
                 p.state++;
-                Pair lp = new Pair(ln,1);
-                s.push(lp);
             }
             else if(p.state == 2){
                 idx++;
-                Node n = new Node(a[idx]);
-                p.node.right = n;
+                if(a[idx] != null){
+                    Node n = new Node(a[idx]);
+                    p.node.right = n;
+                    Pair rtp = new Pair(rn,1);
+                    s.push(rtp);
+                }
                 p.state++;
-                Pair rtp = new Pair(rn,1);
-                s.push(rtp);
             }
             else{
                 s.pop();
@@ -62,5 +74,22 @@ public class BinaryTree {
 
         }
         return rn;
+    }
+
+    public void display(Node root){
+        if(root == null){
+            return;
+        }
+
+        String str = "";
+        str += root.left == null?".":root.left.data;
+        str += "<-" + root.data + "->";
+        str += root.right == null?".":root.right.data;
+        System.out.println(str);
+
+        if(root.left != null)
+            display(root.left);
+        if(root.right != null)
+            display(root.right);
     }
 }
