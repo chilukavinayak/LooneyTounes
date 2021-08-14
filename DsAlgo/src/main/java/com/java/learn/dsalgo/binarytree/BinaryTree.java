@@ -40,7 +40,12 @@ public class BinaryTree {
         ansPrinter("height based on edges: ", basedOnNodes);
         ansPrinter("preOrderTravers","");
         preOrder(root);
+        ansPrinter("inOrderTravers","");
+        inOrder(root);
+        ansPrinter("postOrderTravers","");
+        postOrder(root);
     }
+
 
     public static<T> void ansPrinter(String name,T s) {
         System.out.println("------------------------------"+name+"--------------------------------------");
@@ -182,6 +187,26 @@ public class BinaryTree {
         preOrder(node.left);
         preOrder(node.right);
     }
+
+    public static void inOrder(Node node){
+        if(node == null){
+            return;
+        }
+        preOrder(node.left);
+        System.out.println(node.data);
+        preOrder(node.right);
+    }
+
+    public static void postOrder(Node node){
+        if(node == null){
+            return;
+        }
+        preOrder(node.left);
+        preOrder(node.right);
+        System.out.println(node.data);
+
+    }
+
 }
 
 
