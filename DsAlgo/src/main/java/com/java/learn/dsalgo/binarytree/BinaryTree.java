@@ -36,8 +36,13 @@ public class BinaryTree {
         ansPrinter("size",size);
         int sum = sum(root);
         ansPrinter("sum", sum);
-
+        int max = max(root);
+        ansPrinter("max",max);
+        int min = min(root);
+        ansPrinter("min",min);
     }
+
+
     public static Node construct(Integer[] arr){
 
         Node root = new Node(arr[0],null,null);
@@ -115,6 +120,29 @@ public class BinaryTree {
         int rs =  sum(node.right);
         int s = node.data + ls + rs;
         return s;
+    }
+
+    public static int max(Node node){
+        if(node == null){
+            return Integer.MIN_VALUE;
+        }
+
+        int lv = max(node.left);
+        int rv = max(node.right);
+        int maxOflvAndRv = Math.max(lv,rv);
+        return Math.max(node.data,maxOflvAndRv);
+
+    }
+    public static int min(Node node){
+        if(node == null){
+            return Integer.MAX_VALUE;
+        }
+
+        int lv = min(node.left);
+        int rv = min(node.right);
+        int minOflvAndRv = Math.min(lv,rv);
+        return Math.min(node.data,minOflvAndRv);
+
     }
 }
 
