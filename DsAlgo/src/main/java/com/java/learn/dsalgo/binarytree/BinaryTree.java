@@ -49,6 +49,8 @@ public class BinaryTree {
         ansPrinter("IterativePrePostIn","");
         iterativePrePostIn(root);
         ansPrinter("IsNodeExists",find(root,30));
+        nodeToRootPath(root,30);
+        ansPrinter("nodeToRootPath",nodeToRootPath);
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -276,6 +278,31 @@ public class BinaryTree {
             return true;
 
        return find(root.left,data) || find(root.right, data);
+    }
+
+    public static ArrayList<Integer> nodeToRootPath = new ArrayList<Integer>();
+
+    public static boolean nodeToRootPath(Node root, int data){
+        if(root == null){
+            return false;
+        }
+        if(root.data == data){
+            nodeToRootPath.add(root.data);
+            return true;
+        }
+
+       boolean filst =  nodeToRootPath(root.left,data);
+       if(filst){
+           nodeToRootPath.add(root.data);
+           return true;
+       }
+       boolean first =  nodeToRootPath(root.right,data);
+       if(first){
+           nodeToRootPath.add(root.data);
+           return true;
+       }
+        return false;
+
     }
 }
 
