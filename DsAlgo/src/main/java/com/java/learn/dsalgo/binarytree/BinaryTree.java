@@ -52,8 +52,9 @@ public class BinaryTree {
         nodeToRootPath(root,30);
         ansPrinter("nodeToRootPath",nodeToRootPath);
         ansPrinter("printKdown","");
-
         printKDown(root,2);
+        ansPrinter("printNodesKDistanceAway","");
+        printNodesKDistanceAway(root,37,2);
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -312,7 +313,7 @@ public class BinaryTree {
 
     public static boolean nodeToRootPath1(Node root, int data){
         if(root == null)
-            return true;
+            return false;
 
         if(root.data == data){
             nodeToRootPath1.add(root);
@@ -343,7 +344,25 @@ public class BinaryTree {
         printKDown(node.right,k-1);
     }
 
+    public static void printKDown(Node node, int k,Node block){
+        if(node == null || k < 0 || node == block){
+            return;
+        }
+        if(k == 0)
+            System.out.println(node.data+" ");
 
+        printKDown(node.left,k-1, block);
+        printKDown(node.right,k-1, block);
+    }
+
+    public static void printNodesKDistanceAway(Node root, int data, int k){
+        nodeToRootPath1 = new ArrayList<Node>();
+        nodeToRootPath1(root,data);
+
+        for(int i=0;i<nodeToRootPath1.size();i++){
+            printKDown(nodeToRootPath1.get(i),k-i, i==0?null:nodeToRootPath1.get(i-1));
+        }
+    }
 
 }
 
