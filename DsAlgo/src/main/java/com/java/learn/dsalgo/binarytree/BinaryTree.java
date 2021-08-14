@@ -22,10 +22,18 @@ public class BinaryTree {
         }
     }
 
+    public static<T> void separator(String name,T s) {
+        System.out.println("------------------------------"+name+"--------------------------------------");
+        System.out.println(s);
+        System.out.println("-----------------------------------------------------------------------------");
+    }
+
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{50, 25, 12, null, null, 37, 30 ,null, null, null, 75 ,62, null, 70, null, null, 87 ,null, null};
         Node root = construct(arr);
         display(root);
+        int size = size(root);
+        separator("size",size);
     }
     public static Node construct(Integer[] arr){
 
@@ -85,6 +93,15 @@ public class BinaryTree {
             display(root.left);
         if(root.right != null)
             display(root.right);
+    }
+
+    public static int size(Node root){
+        if(root == null){
+            return 0;
+        }
+        int lc = size(root.left);
+        int rc = size(root.right);
+        return lc+rc+1;
     }
 }
 
