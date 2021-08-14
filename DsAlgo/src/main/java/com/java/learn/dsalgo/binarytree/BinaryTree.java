@@ -51,6 +51,9 @@ public class BinaryTree {
         ansPrinter("IsNodeExists",find(root,30));
         nodeToRootPath(root,30);
         ansPrinter("nodeToRootPath",nodeToRootPath);
+        ansPrinter("printKdown","");
+
+        printKDown(root,2);
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -304,6 +307,44 @@ public class BinaryTree {
         return false;
 
     }
+
+    public static ArrayList<Node> nodeToRootPath1 = new ArrayList<Node>();
+
+    public static boolean nodeToRootPath1(Node root, int data){
+        if(root == null)
+            return true;
+
+        if(root.data == data){
+            nodeToRootPath1.add(root);
+            return true;
+        }
+
+        boolean filst= nodeToRootPath1(root.left,data);
+        if(filst){
+            nodeToRootPath1.add(root);
+            return true;
+        }
+        boolean first= nodeToRootPath1(root.right,data);
+        if(first){
+            nodeToRootPath1.add(root);
+            return true;
+        }
+        return false;
+    }
+
+    public static void printKDown(Node node, int k){
+        if(node == null || k < 0){
+            return;
+        }
+        if(k == 0)
+            System.out.println(node.data+" ");
+
+        printKDown(node.left,k-1);
+        printKDown(node.right,k-1);
+    }
+
+
+
 }
 
 
