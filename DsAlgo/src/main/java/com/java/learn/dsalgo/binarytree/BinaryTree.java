@@ -22,12 +22,6 @@ public class BinaryTree {
         }
     }
 
-    public static<T> void ansPrinter(String name,T s) {
-        System.out.println("------------------------------"+name+"--------------------------------------");
-        System.out.println(s);
-        System.out.println("-----------------------------------------------------------------------------");
-    }
-
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{50, 25, 12, null, null, 37, 30 ,null, null, null, 75 ,62, null, 70, null, null, 87 ,null, null};
         Node root = construct(arr);
@@ -40,8 +34,17 @@ public class BinaryTree {
         ansPrinter("max",max);
         int min = min(root);
         ansPrinter("min",min);
+        int height = height(root);
+        ansPrinter("height based on edges: ", height);
+        int basedOnNodes = heightBasedOnNodes(root);
+        ansPrinter("height based on edges: ", basedOnNodes);
     }
 
+    public static<T> void ansPrinter(String name,T s) {
+        System.out.println("------------------------------"+name+"--------------------------------------");
+        System.out.println(s);
+        System.out.println("-----------------------------------------------------------------------------");
+    }
 
     public static Node construct(Integer[] arr){
 
@@ -133,6 +136,7 @@ public class BinaryTree {
         return Math.max(node.data,maxOflvAndRv);
 
     }
+
     public static int min(Node node){
         if(node == null){
             return Integer.MAX_VALUE;
@@ -143,6 +147,29 @@ public class BinaryTree {
         int minOflvAndRv = Math.min(lv,rv);
         return Math.min(node.data,minOflvAndRv);
 
+    }
+
+    //edges
+    public static int height(Node node){
+        if(node == null){
+            return -1;
+        }
+
+        int lh = height(node.left);
+        int rh = height(node.right);
+
+        return 1 + Math.max(lh,rh);
+    }
+
+    public static int heightBasedOnNodes(Node node){
+        if(node == null){
+            return 0;
+        }
+
+        int lh = heightBasedOnNodes(node.left);
+        int rh = heightBasedOnNodes(node.right);
+
+        return 1 + Math.max(lh,rh);
     }
 }
 
