@@ -38,6 +38,8 @@ public class BinaryTree {
         ansPrinter("height based on edges: ", height);
         int basedOnNodes = heightBasedOnNodes(root);
         ansPrinter("height based on edges: ", basedOnNodes);
+        ansPrinter("preOrderTravers","");
+        preOrder(root);
     }
 
     public static<T> void ansPrinter(String name,T s) {
@@ -170,6 +172,15 @@ public class BinaryTree {
         int rh = heightBasedOnNodes(node.right);
 
         return 1 + Math.max(lh,rh);
+    }
+
+    public static void preOrder(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.println(node.data);
+        preOrder(node.left);
+        preOrder(node.right);
     }
 }
 
