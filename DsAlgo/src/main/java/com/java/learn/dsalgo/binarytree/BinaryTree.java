@@ -13,6 +13,7 @@ public class BinaryTree {
             this.right = right;
         }
     }
+
     public static class Pair{
         Node node;
         int state;
