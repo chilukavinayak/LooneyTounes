@@ -57,11 +57,6 @@ public class BinaryTree {
         ansPrinter("printNodesKDistanceAway","");
         printNodesKDistanceAway(root,37,2);
         printPathRootToLeaveInRage(root,"",0,150,250);
-        leftCloneBinaryTree(root);
-        display(root);
-        System.out.println(diameter1(root));
-
-        System.out.println(diameter2(root).dia);
     }
 
     private static void printPathRootToLeaveInRage(Node root, String ans, int sum, int low, int high) {
@@ -385,61 +380,6 @@ public class BinaryTree {
         for(int i=0;i<nodeToRootPath1.size();i++){
             printKDown(nodeToRootPath1.get(i),k-i, i==0?null:nodeToRootPath1.get(i-1));
         }
-    }
-
-    public static Node leftCloneBinaryTree(Node node){
-        if(node == null)
-            return null;
-
-        Node lst = leftCloneBinaryTree(node.left);
-        Node rst = leftCloneBinaryTree(node.right);
-
-        Node newNode = new Node(node.data,lst,null);
-        node.left = newNode;
-        node.right = rst;
-
-        return node;
-
-
-    }
-
-    public static int diameter1(Node node){
-        if(node == null)
-            return 0;
-
-        int ld = diameter1(node.left);
-        int rd = diameter1(node.right);
-
-        int h = height(node.left) + height(node.right)+2;
-
-        int result = Math.max(Math.max(ld,rd),h);
-        return result;
-
-    }
-
-    public static class DiaPair{
-        int ht;
-        int dia;
-    }
-    public static DiaPair diameter2(Node node){
-        if(node == null){
-            DiaPair base = new DiaPair();
-            base.ht = -1;
-            base.dia = 0;
-            return base;
-        }
-
-        DiaPair ld =diameter2(node.left);
-        DiaPair rd = diameter2(node.right);
-
-        DiaPair mp = new DiaPair();
-        mp.ht = Math.max(ld.ht , rd.ht)+ 1;
-
-        int f = ld.ht + ld.ht + 2;
-
-        mp.dia = Math.max(f, Math.max(ld.dia,rd.dia));
-
-        return mp;
     }
 
 }
