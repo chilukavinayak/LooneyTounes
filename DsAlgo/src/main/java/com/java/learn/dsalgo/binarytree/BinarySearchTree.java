@@ -7,6 +7,7 @@ public class BinarySearchTree {
         int[] input = new int[]{12,25,37,50,62,75,87};
         Node root = construct(input,0, input.length-1);
         display(root);
+        System.out.println(max(root));
     }
     public static Node construct(int[] arr,int low,int hi){
         if(low>hi){
@@ -21,6 +22,7 @@ public class BinarySearchTree {
         return node;
 
     }
+
     public static void display(Node node){
         if(node == null){
             return;
@@ -40,4 +42,66 @@ public class BinarySearchTree {
 
 
     }
+
+    public static int max(Node node){
+        if(node == null){
+            return -1;
+        }
+
+        if(node.right != null)
+            return max(node.right);
+        else
+            return node.data;
+    }
+
+
+    public static int size(Node node) {
+        if(node == null){
+            return 0;
+        }
+
+        int lc = size(node.left);
+        int rc = size(node.right);
+        return lc+rc+1;
+
+    }
+
+    public static int sum(Node node) {
+        if(node == null){
+            return 0;
+        }
+
+        int ls = sum(node.left);
+        int rs = sum(node.right);
+        return ls+rs+node.data;
+    }
+
+    public static int min(Node node) {
+        if(node == null){
+            return -1;
+        }
+
+        if(node.right != null)
+            return min(node.left);
+        else
+            return node.data;
+    }
+
+    public static boolean find(Node node, int data){
+        if(node == null)
+            return false;
+
+        if(data < node.data){
+            return find(node.left,data);
+        }
+        else if(data > node.data){
+            return find(node.right,data);
+        }
+        else if(data == node.data){
+            return true;
+        }
+        else
+            return false;
+    }
+
 }
