@@ -1,6 +1,6 @@
-package com.java.learn.dsalgo.binarytree;
+package com.java.learn.dsalgo.trees;
 
-import static com.java.learn.dsalgo.binarytree.BinaryTree.*;
+import static com.java.learn.dsalgo.trees.BinaryTree.*;
 
 public class BinarySearchTree {
     public static void main(String[] args) {

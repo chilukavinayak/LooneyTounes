@@ -1,4 +1,4 @@
-package com.java.learn.dsalgo.binarytree;
+package com.java.learn.dsalgo.trees;
 
 import java.util.*;
 
