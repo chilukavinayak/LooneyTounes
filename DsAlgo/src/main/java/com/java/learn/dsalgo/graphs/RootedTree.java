@@ -1,5 +1,6 @@
 package com.java.learn.dsalgo.graphs;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -84,5 +85,39 @@ public class RootedTree{
             }
         }
         return node;
+    }
+
+    private List<Integer> findCenter(List<List<Integer>> g){
+        int n = g.size();
+        int[] degree = new int[n]; // degree of every vertex of given graph
+        ArrayList<Integer> leaves  = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            degree[i] = g.get(i).size();
+            //degree of current vertex is 1 or 0 (single node) then add it leave array and set degree as 0 (peeling onion)
+            if(degree[i] == 0 || degree[i] == 1){
+                leaves.add(i);
+                degree[i] = 0;
+            }
+        }
+
+        // processed firs outermost layer of onion
+        int count = leaves.size();
+        while(count < n){
+            ArrayList<Integer> innerLayer  = new ArrayList<>();
+            for(int leaf : leaves){
+                for(int neighbour : g.get(leaf)){
+                    degree[neighbour] = degree[neighbour] - 1;
+                    if(degree[neighbour] == 1){
+                        innerLayer.add(neighbour);
+                        degree[neighbour] = 0;
+                    }
+                }
+                degree[leaf] = 0;
+                count += innerLayer.size();
+                leaves = innerLayer;
+            }
+        }
+
+        return leaves;
     }
 }
