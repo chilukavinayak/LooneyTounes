@@ -31,12 +31,12 @@ public class Dijkstra {
         graph.get(3).add(new Edge(3, 4,3 ));
         graph.get(4).add(new Edge(4, null, null));
 
-        Integer[] dist = dijskraShortestPath(graph,N,0);
+        Integer[] dist = dijskraShortestDistance(graph,N,0);
         System.out.println(Arrays.asList(dist));
 
     }
 
-    public static Integer[] dijskraShortestPath(Map<Integer, List<Edge>> graph,int n, int s){
+    public static Integer[] dijskraShortestDistance(Map<Integer, List<Edge>> graph,int n, int s){
 
         Integer[] dist = new Integer[n];
         boolean[] visited = new boolean[n];
