@@ -1,11 +1,8 @@
 package com.java.learn.dsalgo.direted.graphs;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class TopologySortAdjcentList {
+public class TopologicalSortAdjacencyList {
 
     public static class Edge{
         int from;
@@ -43,6 +40,9 @@ public class TopologySortAdjcentList {
         List<Integer> ordering = topologicalSort(graph);
         System.out.println(ordering);
 
+        Integer[] dist = shortestDistance(graph);
+
+        System.out.println(  Arrays.asList(dist));
 
     }
 
@@ -73,5 +73,29 @@ public class TopologySortAdjcentList {
 
     }
 
+
+    public static Integer[] shortestDistance(Map<Integer,List<Edge>> graph){
+        List<Integer> topsort = topologicalSort(graph);
+        int n = graph.size();
+        Integer[] dist = new Integer[n];
+
+        dist[0] = 0;
+
+        for(int i=0;i<topsort.size();i++){
+            int index = topsort.get(i);
+            List<Edge> adjacentEdges =  graph.get(index);
+            for(Edge edge : adjacentEdges){
+                int newEdgeWeight = edge.weight + dist[index];
+                if(dist[edge.to] == null)
+                    dist[edge.to] = newEdgeWeight;
+                else{
+                    dist[edge.to] = Math.min(newEdgeWeight,dist[edge.to]);
+                }
+            }
+
+        }
+
+        return dist;
+    }
 
 }
