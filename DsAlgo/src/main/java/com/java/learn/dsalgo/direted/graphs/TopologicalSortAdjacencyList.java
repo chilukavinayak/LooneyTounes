@@ -6,12 +6,11 @@ import java.util.stream.Collectors;
 public class TopologicalSortAdjacencyList {
 
     public static class Edge{
-        int from;
-        int to;
-        int id;
-        int weight;
+        Integer from;
+        Integer to;
+        Integer weight;
 
-        public Edge(int from,int to,int weight){
+        public Edge(Integer from,Integer to,Integer weight){
             this.from = from;
             this.to = to;
             this.weight = weight;
