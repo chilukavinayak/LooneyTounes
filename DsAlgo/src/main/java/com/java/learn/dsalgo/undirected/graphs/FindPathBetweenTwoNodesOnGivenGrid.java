@@ -1,4 +1,4 @@
-package com.java.learn.dsalgo.graphs;
+package com.java.learn.dsalgo.undirected.graphs;
 
 import java.util.LinkedList;
 import java.util.Queue;

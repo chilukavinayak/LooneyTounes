@@ -1,6 +1,5 @@
-package com.java.learn.dsalgo.graphs;
+package com.java.learn.dsalgo.undirected.graphs;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 class TreeNode{
@@ -121,7 +120,7 @@ public class RootedTree{
 
     public boolean isomorphicTree(List<List<Integer>> g1, List<List<Integer>> g2){
         if(g1 == null && g2 == null || g1.size() != g2.size())
-                return true;
+            return true;
 
         List<Integer> centerG1 = findCenter(g1);
         TreeNode rootG1 = new TreeNode(centerG1.get(0),null, new ArrayList<TreeNode>());
@@ -142,8 +141,8 @@ public class RootedTree{
     }
 
     private String encode(TreeNode node) {
-         if(node == null)
-             return "";
+        if(node == null)
+            return "";
 
         List<String> labels = new LinkedList<>();
         for(TreeNode child: node.childs){
