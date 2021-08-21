@@ -1,6 +1,7 @@
 package com.java.learn.dsalgo.direted.graphs;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TopologicalSortAdjacencyList {
 
@@ -43,6 +44,10 @@ public class TopologicalSortAdjacencyList {
         Integer[] dist = shortestDistance(graph);
 
         System.out.println(  Arrays.asList(dist));
+
+        Integer[] dist1 = longestPath(graph);
+        System.out.println( Arrays.asList(dist1));
+
 
     }
 
@@ -97,5 +102,32 @@ public class TopologicalSortAdjacencyList {
 
         return dist;
     }
+
+
+
+    public static Integer[] longestPath(Map<Integer,List<Edge>> graph){
+        List<Integer> topsort = topologicalSort(graph);
+        int n = graph.size();
+        Integer[] dist = new Integer[n];
+
+        dist[0] = 0;
+
+        for(int i=0;i<topsort.size();i++){
+            int index = topsort.get(i);
+            List<Edge> adjacentEdges =  graph.get(index);
+            for(Edge edge : adjacentEdges){
+                int newEdgeWeight = (-1*edge.weight) + dist[index];
+                if(dist[edge.to] == null)
+                    dist[edge.to] = newEdgeWeight;
+                else{
+                    dist[edge.to] = Math.min(newEdgeWeight,dist[edge.to]);
+                }
+            }
+
+        }
+
+        return dist;
+    }
+
 
 }
