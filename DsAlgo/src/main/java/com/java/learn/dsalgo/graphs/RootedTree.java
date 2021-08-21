@@ -1,9 +1,7 @@
 package com.java.learn.dsalgo.graphs;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 class TreeNode{
     int id;
@@ -120,4 +118,47 @@ public class RootedTree{
 
         return leaves;
     }
+
+    public boolean isomorphicTree(List<List<Integer>> g1, List<List<Integer>> g2){
+        if(g1 == null && g2 == null || g1.size() != g2.size())
+                return true;
+
+        List<Integer> centerG1 = findCenter(g1);
+        TreeNode rootG1 = new TreeNode(centerG1.get(0),null, new ArrayList<TreeNode>());
+        TreeNode rootedTreeG1 = buildTree(g1,rootG1, null );
+        String encodeStringG1 = encode(rootedTreeG1);
+
+        List<Integer> centerG2 = findCenter(g2);
+        for(int center : centerG2){
+            TreeNode rootG2 = new TreeNode(center,null, new ArrayList<TreeNode>());
+            TreeNode rootedTreeG2 = buildTree(g1,rootG2, null );
+            String encodeStringG2 = encode(rootedTreeG2);
+            if(encodeStringG1.equals(encodeStringG2)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private String encode(TreeNode node) {
+         if(node == null)
+             return "";
+
+        List<String> labels = new LinkedList<>();
+        for(TreeNode child: node.childs){
+            labels.add(encode(child));
+        }
+
+        Collections.sort(labels);
+        StringBuilder sb = new StringBuilder();
+        for(String label : labels){
+            sb.append(label);
+        }
+
+        return "(" + sb.toString() + ")";
+
+    }
+
+
 }
