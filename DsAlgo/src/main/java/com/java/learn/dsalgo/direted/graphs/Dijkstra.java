@@ -33,8 +33,63 @@ public class Dijkstra {
 
         Integer[] dist = dijskraShortestDistance(graph,N,0);
         System.out.println(Arrays.asList(dist));
+        System.out.println(findShortestPath(graph,N,0,4));
 
     }
+
+    public static ArrayList<Integer> findShortestPath(Map<Integer, List<Edge>> graph, int n, int s, int e){
+        Integer[] pre = new Integer[n];
+        Integer[] dist = dijskraShortestDistance(graph,n,s,pre);
+
+        ArrayList<Integer> path = new ArrayList<>();
+        if(dist[e] == null)
+            return path;
+        for(Integer at = e; at != null; at = pre[at] ){
+            path.add(0,at);
+        }
+        return path;
+
+    }
+
+    public static Integer[] dijskraShortestDistance(Map<Integer, List<Edge>> graph,int n, int s, Integer[] prev){
+
+        Integer[] dist = new Integer[n];
+        boolean[] visited = new boolean[n];
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b)->a.value - b.value);
+        pq.offer(new Pair(s,0));
+        dist[s] = 0;
+        while(!pq.isEmpty()){
+            Pair currentNode = pq.poll();
+            int currentNodeLabel = currentNode.key;
+
+            if(dist[currentNodeLabel] < currentNode.value )
+                continue;
+
+            if(!visited[currentNodeLabel]){
+                visited[currentNodeLabel] = true;
+                List<Edge> neigbours = graph.get(currentNodeLabel);
+                for(Edge neibour : neigbours){
+                    if(neibour.to == null)
+                        continue;
+
+                    int newWeight = neibour.weight+dist[currentNodeLabel];
+                    if(dist[neibour.to] == null){
+                        dist[neibour.to] = newWeight;
+                        pq.add(new Pair(neibour.to, newWeight));
+                    }
+                    else{
+                        if(newWeight < dist[neibour.to]){
+                            dist[neibour.to] = newWeight;
+                            prev[neibour.to] = currentNodeLabel;
+                        }
+                    }
+
+                }
+            }
+        }
+        return dist;
+    }
+
 
     public static Integer[] dijskraShortestDistance(Map<Integer, List<Edge>> graph,int n, int s){
 
