@@ -35,6 +35,22 @@ public class Dijkstra {
         System.out.println(Arrays.asList(dist));
         System.out.println(findShortestPath(graph,N,0,4));
 
+
+        List<Integer> arr = new ArrayList<>();
+        arr.add(10);
+        arr.add(20);
+
+        List<List<Integer>> arr_arr = new ArrayList<>();
+        arr_arr.add(arr);
+        arr_arr.add(arr);
+        arr_arr.add(arr);
+
+
+        for(List<Integer> ar : arr_arr){
+            System.out.println(ar);
+        }
+
+
     }
 
     public static ArrayList<Integer> findShortestPath(Map<Integer, List<Edge>> graph, int n, int s, int e){
