@@ -104,4 +104,43 @@ public class BinarySearchTree {
             return false;
     }
 
+    public static void preOrder(Node node){
+        if(node == null)
+            return;
+
+        System.out.println(node.data);
+        preOrder(node.left);
+        preOrder(node.right);
+
+    }
+    //ascending
+    public static void inOrder(Node node){
+        if(node == null)
+            return;
+
+        inOrder(node.left);
+        System.out.println(node.data);
+        inOrder(node.right);
+    }
+    public static void inOrder_desc(Node node){
+        if(node  == null)
+            return;
+
+        inOrder_desc(node.right);
+        System.out.println(node.data);
+        inOrder_desc(node.left);
+
+    }
+
+    public static void postOrder(Node node){
+        if(node == null)
+            return;
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.data);
+    }
+
+
+
 }
