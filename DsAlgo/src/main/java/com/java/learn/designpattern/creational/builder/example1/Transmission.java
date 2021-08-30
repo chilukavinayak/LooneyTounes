@@ -1,4 +1,5 @@
 package com.java.learn.designpattern.creational.builder.example1;
 
-public class Transmission {
+public enum Transmission {
+    AUTO,SEMIAUTO,MANUAL,EMT;
 }
