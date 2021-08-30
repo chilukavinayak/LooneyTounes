@@ -9,7 +9,7 @@ public class Engine {
     private Transmission transmission;
     private FuelType fuelType;
 
-    public Engine(int cc, Transmission transmission, FuelType fuelType, int seatingCapacity) {
+    public Engine(int cc, Transmission transmission, FuelType fuelType) {
         this.cc = cc;
         this.transmission = transmission;
         this.fuelType = fuelType;
