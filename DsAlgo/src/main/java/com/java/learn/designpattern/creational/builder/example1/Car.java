@@ -7,4 +7,13 @@ public class Car {
     private GPSNavigation navigation;
     private int numberOfSeats;
     private CarType carType;
+
+    public Car(Indicator indicator, Transmission transmission, Engine engine, GPSNavigation navigation, int numberOfSeats, CarType carType) {
+        this.indicator = indicator;
+        this.transmission = transmission;
+        this.engine = engine;
+        this.navigation = navigation;
+        this.numberOfSeats = numberOfSeats;
+        this.carType = carType;
+    }
 }
