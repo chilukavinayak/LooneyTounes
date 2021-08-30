@@ -16,4 +16,52 @@ public class Car {
         this.numberOfSeats = numberOfSeats;
         this.carType = carType;
     }
+
+    public Indicator getIndicator() {
+        return indicator;
+    }
+
+    public void setIndicator(Indicator indicator) {
+        this.indicator = indicator;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(Transmission transmission) {
+        this.transmission = transmission;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public GPSNavigation getNavigation() {
+        return navigation;
+    }
+
+    public void setNavigation(GPSNavigation navigation) {
+        this.navigation = navigation;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public CarType getCarType() {
+        return carType;
+    }
+
+    public void setCarType(CarType carType) {
+        this.carType = carType;
+    }
 }
