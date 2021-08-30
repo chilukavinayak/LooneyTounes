@@ -2,10 +2,10 @@ package com.java.learn.designpattern.creational.builder.car.example.components;
 
 import com.java.learn.designpattern.creational.builder.car.example.enums.BreakType;
 
-public class Break {
+public class Breaks {
     private BreakType breakType;
 
-    public Break(BreakType type){
+    public Breaks(BreakType type){
         this.breakType = type;
     }
 
