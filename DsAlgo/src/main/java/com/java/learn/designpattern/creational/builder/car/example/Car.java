@@ -1,4 +1,6 @@
-package com.java.learn.designpattern.creational.builder.example1;
+package com.java.learn.designpattern.creational.builder.car.example;
+
+import com.java.learn.designpattern.creational.builder.car.example.component.*;
 
 public class Car {
     private Indicator indicator;

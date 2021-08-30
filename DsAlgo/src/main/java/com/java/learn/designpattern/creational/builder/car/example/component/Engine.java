@@ -1,4 +1,4 @@
-package com.java.learn.designpattern.creational.builder.example1;
+package com.java.learn.designpattern.creational.builder.car.example.component;
 
 
 /*
