@@ -2,7 +2,7 @@ package com.java.learn.designpattern.creational.builder.car.example;
 
 import com.java.learn.designpattern.creational.builder.car.example.component.*;
 
-public class Car {
+public class ManualCar {
     private Indicator indicator;
     private Transmission transmission;
     private Engine engine;
@@ -10,7 +10,7 @@ public class Car {
     private int numberOfSeats;
     private CarType carType;
 
-    public Car(Indicator indicator, Transmission transmission, Engine engine, GPSNavigation navigation, int numberOfSeats, CarType carType) {
+    public ManualCar(Indicator indicator, Transmission transmission, Engine engine, GPSNavigation navigation, int numberOfSeats, CarType carType) {
         this.indicator = indicator;
         this.transmission = transmission;
         this.engine = engine;
@@ -18,7 +18,7 @@ public class Car {
         this.numberOfSeats = numberOfSeats;
         this.carType = carType;
     }
-    public Car(){}
+    public ManualCar(){}
 
     public Indicator getIndicator() {
         return indicator;

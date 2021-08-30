@@ -1,6 +1,7 @@
 package com.java.learn.designpattern.creational.builder.car.example.builder;
 
 import com.java.learn.designpattern.creational.builder.car.example.Builder;
+import com.java.learn.designpattern.creational.builder.car.example.Car;
 import com.java.learn.designpattern.creational.builder.car.example.component.Indicator;
 import com.java.learn.designpattern.creational.builder.car.example.component.Engine;
 import com.java.learn.designpattern.creational.builder.car.example.component.CarType;
@@ -13,6 +14,7 @@ public class CarBuilder implements Builder {
     private GPSNavigation gpsNavigation;
     private Transmission transmission;
     private CarType carType;
+    private int noOfSeats;
 
     @Override
     public void setIndicator(Indicator indicator) {
@@ -37,6 +39,21 @@ public class CarBuilder implements Builder {
     @Override
     public void setTranmission(Transmission tranmission) {
         this.transmission = tranmission;
+    }
 
+    @Override
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.noOfSeats = numberOfSeats;
+    }
+
+    public Car build(){
+        Car car =  new Car();
+        car.setCarType(carType);
+        car.setEngine(engine);
+        car.setIndicator(indicator);
+        car.setNavigation(gpsNavigation);
+        car.setTransmission(transmission);
+        car.setNumberOfSeats(noOfSeats);
+        return car;
     }
 }

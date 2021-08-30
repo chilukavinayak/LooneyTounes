@@ -8,4 +8,5 @@ public interface Builder {
     void setCarType(CarType type);
     void setGPSNavigation(GPSNavigation gpsNavigation);
     void setTranmission(Transmission tranmission);
+    void setNumberOfSeats(int numberOfSeats);
 }
