@@ -15,4 +15,11 @@ public class SunRoof {
     public void setSunRoofFitted(boolean sunRoofFitted) {
         isSunRoofFitted = sunRoofFitted;
     }
+
+    @Override
+    public String toString() {
+        return "SunRoof{" +
+                "isSunRoofFitted=" + isSunRoofFitted +
+                '}';
+    }
 }

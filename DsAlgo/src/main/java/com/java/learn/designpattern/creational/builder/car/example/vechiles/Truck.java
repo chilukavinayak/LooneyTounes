@@ -66,4 +66,16 @@ public class Truck {
     public void setSunRoof(SunRoof sunRoof) {
         this.sunRoof = sunRoof;
     }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "engine=" + engine +
+                ", heatedSeats=" + heatedSeats +
+                ", musicSystem=" + musicSystem +
+                ", navigationSystem=" + navigationSystem +
+                ", breaks=" + breaks +
+                ", sunRoof=" + sunRoof +
+                '}';
+    }
 }

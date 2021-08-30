@@ -15,4 +15,11 @@ public class HeatedSeats {
     public void setHeatable(boolean heatable) {
         isHeatable = heatable;
     }
+
+    @Override
+    public String toString() {
+        return "HeatedSeats{" +
+                "isHeatable=" + isHeatable +
+                '}';
+    }
 }

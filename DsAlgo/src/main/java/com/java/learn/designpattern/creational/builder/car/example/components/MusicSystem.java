@@ -14,4 +14,11 @@ public class MusicSystem {
     public MusicSystem(String systemName) {
         this.systemName = systemName;
     }
+
+    @Override
+    public String toString() {
+        return "MusicSystem{" +
+                "systemName='" + systemName + '\'' +
+                '}';
+    }
 }

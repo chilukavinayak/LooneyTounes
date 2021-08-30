@@ -3,15 +3,22 @@ package com.java.learn.designpattern.creational.builder.car.example.components;
 import static java.lang.Math.random;
 
 public class NavigationSystem {
+    private String location;
 
-    public String getCurrentLocation() {
-        int rand = (int) (random()%4);
+    public NavigationSystem(){
+        location = getLocation();
+    }
+
+
+
+    public String getLocation() {
+        int rand = (int)(random()*10)+1;
 
         switch (rand){
             case 0:
-               return "(361) 362-0124\n" +
-                       "1006 W Jones St\n" +
-                       "Beeville, Texas(TX), 78102";
+                return "(361) 362-0124\n" +
+                        "1006 W Jones St\n" +
+                        "Beeville, Texas(TX), 78102";
 
             case 1:
                 return "(320) 875-3441\n" +
@@ -38,5 +45,13 @@ public class NavigationSystem {
                         "Brigantine, New Jersey(NJ), 08203";
 
         }
+
+    }
+
+    @Override
+    public String toString() {
+        return "NavigationSystem{" +
+                "location='" + location + '\'' +
+                '}';
     }
 }

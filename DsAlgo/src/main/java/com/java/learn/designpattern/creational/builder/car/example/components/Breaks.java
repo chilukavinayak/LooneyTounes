@@ -16,4 +16,11 @@ public class Breaks {
     public void setBreakType(BreakType breakType) {
         this.breakType = breakType;
     }
+
+    @Override
+    public String toString() {
+        return "Breaks{" +
+                "breakType=" + breakType +
+                '}';
+    }
 }
