@@ -25,6 +25,13 @@ public class example9 {
 
         Optional<Integer> longestLenth = friends.stream().map(s ->s.length()).reduce((a, b)->a>=b?a:b);
         longestLenth.ifPresent(System.out::println);
+
+        final String BrianOrLonger =
+                friends.stream()
+                        .reduce("Brian", (name1, name2) ->
+                                name1.length() > name2.length() ? name1 : name2);
+
+        System.out.println(BrianOrLonger);
     }
 
 
