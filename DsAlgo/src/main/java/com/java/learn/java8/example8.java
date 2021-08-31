@@ -29,6 +29,8 @@ public class example8 {
             System.out.println(foundName);
 
 
+        System.out.println("---------------------");
+
         //Method-2
         pickName(friends,"N");
         pickName(friends,"Z");
@@ -38,6 +40,7 @@ public class example8 {
 
         Optional<String> found = friends.stream().filter(s->s.startsWith(letter)).findFirst();
         System.out.println(String.format("Friend starts with %s and Name -> %s",letter, found.orElse("not found")));
+        found.ifPresent(name -> System.out.println("Hello "+name));
     }
 
 }
