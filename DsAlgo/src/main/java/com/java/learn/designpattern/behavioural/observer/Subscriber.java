@@ -1,19 +1,13 @@
 package com.java.learn.designpattern.behavioural.observer;
 
-class Subscriber {
-    private String state;
 
-    public Subscriber(String state){
-        this.state = state;
-    }
+class Subject{
 
-    public void notify(String state){
-        this.state = state;
-    }
-
-    public void print(){
-        System.out.println(state);
-    }
 }
 
-class Observer
+abstract class Observer{
+    //me as (observer) interested in particular subject
+    protected Subject subject;
+    //update me any changes in interesed subject
+    abstract protected void update();
+}
