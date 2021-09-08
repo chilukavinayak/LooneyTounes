@@ -98,4 +98,3 @@ class Client {
         factory.createRadioButton().paint();
     }
 }
-}
