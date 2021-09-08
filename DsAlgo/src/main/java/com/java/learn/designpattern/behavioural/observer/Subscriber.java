@@ -88,6 +88,8 @@ class Client{
 
         //first change
         subject.setState(10);
+        System.out.println("\n");
+        subject.unsubscribe(binaryObserver);
 
         //second change
         subject.setState(15);
