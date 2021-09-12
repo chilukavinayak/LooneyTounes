@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Program2_KPC {
    static Map<Character,String>  km= new HashMap<>();
@@ -24,8 +25,10 @@ public class Program2_KPC {
     //    list.forEach(s -> System.out.print(s + ", "));
 
         list = getKPC("78");
-        list.forEach(System.out::println);
+        System.out.println(String.join(", ",list));
 
+        list = getKPC("789");
+        System.out.println(String.join(", ",list));
     }
 
     private static List<String> getKPC(String keysPressed) {
@@ -40,9 +43,9 @@ public class Program2_KPC {
         List<String> result = getKPC(ros);
 
         List<String> ans = new ArrayList<>();
-        for (String s : result) {
-            String pkeys= km.get(c);
-            for(char pkey : pkeys.toCharArray()){
+        String pkeys= km.get(c);
+        for(char pkey : pkeys.toCharArray()){
+            for (String s : result) {
                 ans.add(pkey+s);
             }
         }
@@ -50,6 +53,28 @@ public class Program2_KPC {
         return ans;
     }
 
+    //123
+    private static List<String> getKPC_v2(String keysPressed) {
+        if(keysPressed.isEmpty()){
+            List<String> base = new ArrayList<>();
+            base.add("");
+            return base;
+        }
 
+        char ch = keysPressed.charAt(0);
+        String ros = keysPressed.substring(1);
+
+        List<String> rres = getKPC_v2(ros);
+
+        List<String> mres = new ArrayList<>();
+
+        String options = km.get(ch);
+
+        for(char op: options.toCharArray()){
+            mres.addAll(rres.stream().map(s -> op+s).collect(Collectors.toList()));
+        }
+
+        return mres;
+    }
 
 }
