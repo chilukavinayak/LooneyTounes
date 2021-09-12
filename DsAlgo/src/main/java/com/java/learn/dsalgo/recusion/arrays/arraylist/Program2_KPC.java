@@ -29,6 +29,12 @@ public class Program2_KPC {
 
         list = getKPC("789");
         System.out.println(String.join(", ",list));
+
+
+        list = getKPC_v2("789");
+        System.out.println(String.join(", ",list));
+
+
     }
 
     private static List<String> getKPC(String keysPressed) {
@@ -61,10 +67,10 @@ public class Program2_KPC {
             return base;
         }
 
-        char ch = keysPressed.charAt(0);
-        String ros = keysPressed.substring(1);
+        char ch = keysPressed.charAt(0); //1
+        String ros = keysPressed.substring(1); //23
 
-        List<String> rres = getKPC_v2(ros);
+        List<String> rres = getKPC_v2(ros); // [6 comibinations]
 
         List<String> mres = new ArrayList<>();
 
