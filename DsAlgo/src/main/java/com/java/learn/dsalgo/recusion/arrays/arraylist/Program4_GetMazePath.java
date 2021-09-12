@@ -6,7 +6,7 @@ import java.util.List;
 public class Program4_GetMazePath {
 
     public static void main(String[] args) {
-        int n = 3;
+        int n = 5;
         int m = 3;
         List<String> ans = getMazePath(1,1,n,m);
         System.out.println(ans);
@@ -16,7 +16,7 @@ public class Program4_GetMazePath {
 
     private static List<String> getMazePath(int i,int j,int n, int m) {
 
-        if(i > n || j > m || i > m || j > n){
+        if(i > n || j > m ){
             List<String> base = new ArrayList<>();
             return base;
         }
