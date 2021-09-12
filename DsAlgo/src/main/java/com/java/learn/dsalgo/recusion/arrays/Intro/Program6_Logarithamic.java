@@ -1,4 +1,4 @@
-package com.java.learn.dsalgo.recusion;
+package com.java.learn.dsalgo.recusion.arrays.Intro;
 
 public class Program6_Logarithamic {
     public static void main(String[] args) {

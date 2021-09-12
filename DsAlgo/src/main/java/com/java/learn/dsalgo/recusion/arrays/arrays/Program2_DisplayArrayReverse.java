@@ -1,6 +1,4 @@
-package com.java.learn.dsalgo.recusion.arrays;
-
-import java.util.Arrays;
+package com.java.learn.dsalgo.recusion.arrays.arrays;;
 
 public class Program2_DisplayArrayReverse {
     public static void main(String[] args) {

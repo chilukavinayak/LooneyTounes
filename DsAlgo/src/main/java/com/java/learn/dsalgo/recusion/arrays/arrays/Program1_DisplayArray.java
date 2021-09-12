@@ -1,4 +1,4 @@
-package com.java.learn.dsalgo.recusion.arrays;
+package com.java.learn.dsalgo.recusion.arrays.arrays;
 
 import java.util.Scanner;
 
