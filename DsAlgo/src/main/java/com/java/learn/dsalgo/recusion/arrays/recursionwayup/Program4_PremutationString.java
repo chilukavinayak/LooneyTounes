@@ -1,6 +1,6 @@
 package com.java.learn.dsalgo.recusion.arrays.recursionwayup;
 
-public class Program1_PremutationString {
+public class Program4_PremutationString {
     public static void main(String[] args) {
         String str = "abc";
         permutation(str,"");
