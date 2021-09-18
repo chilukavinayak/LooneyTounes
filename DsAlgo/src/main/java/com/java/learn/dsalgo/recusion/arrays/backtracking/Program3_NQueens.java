@@ -2,7 +2,7 @@ package com.java.learn.dsalgo.recusion.arrays.backtracking;
 
 import java.util.Scanner;
 
-public class NQueens {
+public class Program3_NQueens {
     public static void main(String[] args) {
         Scanner sc  = new Scanner(System.in);
         int n = sc.nextInt();
