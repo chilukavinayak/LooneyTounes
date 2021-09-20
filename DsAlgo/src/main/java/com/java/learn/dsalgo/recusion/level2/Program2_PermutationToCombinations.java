@@ -25,8 +25,6 @@ public class Program2_PermutationToCombinations {
             System.out.println();
         }
 
-
-
         for(int b = cb+1;b<tb;b++){
             boxes[b] = true;
             printCombinations(boxes,tb,ts,b,cs+1);
