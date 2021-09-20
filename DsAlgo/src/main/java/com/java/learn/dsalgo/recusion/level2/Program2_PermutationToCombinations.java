@@ -2,7 +2,7 @@ package com.java.learn.dsalgo.recusion.level2;
 
 import java.util.Scanner;
 
-public class PermutationToCombinations {
+public class Program2_PermutationToCombinations {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int tb = sc.nextInt();

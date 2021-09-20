@@ -3,7 +3,7 @@ package com.java.learn.dsalgo.recusion.level2;
 
 import java.util.Scanner;
 
-public class Combination{
+public class Program1_Combination {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
