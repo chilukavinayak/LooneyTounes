@@ -1,26 +1,27 @@
 package com.java.learn.dsalgo.recusion.level2;
 
+
 import java.util.Scanner;
 
-public class Combination {
+public class Combination{
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int r = sc.nextInt();
         int n = sc.nextInt();
-        combination(1,n,r,0,"");
-
+        int r = sc.nextInt();
+        printCombinations(0,n,0,r,"");
     }
-
-    public static void combination(int cb,int tb, int ssf, int ts, String asf){
-        if(cb > tb) {
-            if (ssf == ts) {
-                System.out.println(asf);
-
+    static public void printCombinations(int cb,int tb,int cs, int ts,String ans){
+        if(cb == tb){
+            if(cs == ts){
+                System.out.println(ans);
             }
             return;
         }
 
-        combination(cb+1,tb,ssf+1,ts,asf+"i");
-        combination(cb+1,tb,ssf,ts,asf+"-");
+        printCombinations(cb+1,tb,cs+1,ts,ans+"i");
+        printCombinations(cb+1,tb,cs,ts,ans+"-");
+
     }
+
 }
