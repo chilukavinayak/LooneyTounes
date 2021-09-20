@@ -3,6 +3,11 @@ package com.java.learn.dsalgo.slidingwindow;
 import java.util.HashMap;
 
 public class Program8_CharacterReplacement {
+  public static void main(String[] args) {
+    System.out.println(findLength("aabccbb",2)); // 5
+    System.out.println(findLength("abbcb",1));  // 4
+    System.out.println(findLength("abccde",1)); // 3
+  }
   public static int findLength(String str, int k) {
     HashMap<Character,Integer> freMap = new HashMap<>();
     int maxRepeat = 0,s = 0,length=0;
