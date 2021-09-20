@@ -2,7 +2,7 @@ package com.java.learn.dsalgo.slidingwindow;
 
 import java.util.HashMap;
 
-public class LengthOfLongestSubStringNoRepeatingCharacters {
+public class Program_6_LengthOfLongestSubStringNoRepeatingCharacters {
     public static void main(String[] args) {
 
         int ans1 = findLength("aabccbb"); // abc -> o/p -> 3
