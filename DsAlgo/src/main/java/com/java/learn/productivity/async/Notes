@@ -1,0 +1,21 @@
+Parallel vs Concurrent
+
+Parallel:
+Walking and talking simultaneously
+
+
+Concurrenct:
+
+Drink and Talk is Concurrenct (two task going on at any time but only one task going on)
+
+Async:
+
+Non-Blocking call -> Sequencial or Parallel
+
+
+Thread:
+
+-threads are lightweight
+- how manay threads can /should be created? ( depends on number of cores, if we create more no of threads then available cores, the task would be more intensive)
+            - (limited by amount of memeory)
+                - sample1:

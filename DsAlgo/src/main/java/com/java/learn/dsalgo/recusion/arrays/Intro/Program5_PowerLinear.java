@@ -2,12 +2,19 @@ package com.java.learn.dsalgo.recusion.arrays.Intro;
 
 public class Program5_PowerLinear {
     public static void main(String[] args) {
-        int ans = power(2,5);
+        int ans = noOf1s(-2);
         System.out.println(ans);
     }
-    static public int power(int x,int n){
-        if(n == 0)
-            return 1;
-        return x*power(x,n-1);
+
+    private static int noOf1s(int num) {
+        int count =0;
+        for(int i=31;i>=0;i--){
+            if((1 << i & num) >= 1){
+                count++;
+            }
+        }
+        return count;
     }
+
+
 }
